@@ -1,4 +1,5 @@
 To-Do List App
+
 Description
 The To-Do List App is a feature-rich, user-friendly application designed to help users manage tasks effectively. Users can add, delete, edit, mark tasks as completed, and even search or filter tasks. The app saves tasks and their statuses using local storage, ensuring persistence across browser sessions.
 
