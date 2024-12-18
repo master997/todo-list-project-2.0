@@ -5,14 +5,28 @@ const taskInput = document.querySelector(".task-input");
 const taskBTN = document.querySelector(".add-task");
 const taskList = document.querySelector(".task-list");
 
+let tasks = []; //empty array for local storage
 const addTask = function () {
-  const taskValue = taskInput.value; //gets value from input
-  const newElement = document.createElement("li"); //creates new element list item
-  newElement.textContent = taskValue; //gets task content from task value
-  taskList.appendChild(newElement); //adds element to the task list
-  taskInput.value = ""; //clears input
+  if (taskInput.value === "") {
+    // if no value given alert is given to make sure a a proper task is added
+    alert("Please input a task");
+    return;
+  } else {
+    const taskValue = taskInput.value; //stores the input value
+    const newElement = document.createElement("li"); //creates a new list element
+    newElement.textContent = taskValue; //sets new element text to the value of the task input
+    taskList.appendChild(newElement); //adds new list item to the to the task list
+    tasks.push(taskValue); //adds task to empty array
+    console.log(tasks);
+    taskInput.value = ""; //clears input
+    saveTasks();
+  }
+};
+
+const saveTasks = function () {
+  localStorage.setItem("tasks", JSON.stringify(tasks)); //saves the array and puts it into a string
 };
 taskBTN.addEventListener("click", function () {
-  console.log("button clicked");
   addTask();
+  console.log("button clicked");
 });
