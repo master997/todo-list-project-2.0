@@ -5,33 +5,47 @@ const taskInput = document.querySelector(".task-input");
 const taskBTN = document.querySelector(".add-task");
 const taskList = document.querySelector(".task-list");
 
-let tasks = []; //gloabl array for local storage
+let inputValue; //global variable so can use in other fucntion
 const addTask = function () {
-  if (taskInput.value === "") {
-    // if no value given alert is given to make sure a a proper task is added
-    alert("Please input a task");
+  inputValue = taskInput.value;
+  if (inputValue.trim() === "" || inputValue === null) {
+    alert("Please enter a proper task");
     return;
-  } else {
-    const taskValue = taskInput.value; //stores the input value
-    const newElement = document.createElement("li"); //creates a new list element
-    newElement.textContent = taskValue; //sets new element text to the value of the task input
-    taskList.appendChild(newElement); //adds new list item to the to the task list
-    tasks.push(taskValue); // push task inout value into array
-
-    saveTask();
-    console.log(tasks);
-    taskInput.value = ""; //clears input
-
-    const deleteBTN = document.createElement("button");
-    deleteBTN.textContent = "Delete Task";
-    deleteBTN.classList.add("delete-btn");
-    newElement.appendChild(deleteBTN);
   }
+  createElement();
+  taskInput.value = ""; //clears input
 };
-const saveTask = function () {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+
+const createElement = function () {
+  const spanElement = document.createElement("span");
+  const newElement = document.createElement("li");
+  spanElement.textContent = inputValue; //puts text input into a span
+  newElement.appendChild(spanElement); //span into list item
+  taskList.appendChild(newElement); //list item added to task list
+
+  //adding delete btn
+  const deleteBTN = document.createElement("button");
+  deleteBTN.textContent = "Delete";
+  deleteBTN.classList.add("delete-btn");
+  newElement.appendChild(deleteBTN);
+
+  //adding editbtn
+  const editBTN = document.createElement("button");
+  editBTN.textContent = "edit";
+  editBTN.classList.add("editBTN");
+  newElement.appendChild(editBTN);
+
+  //adding complete btn
+  const completeBTN = document.createElement("button");
+  completeBTN.textContent = "Mark as Done";
+  completeBTN.classList.add("complete-btn");
+  newElement.appendChild(completeBTN);
+
+  //event listeners
+  deleteBTN.addEventListener("click", function () {});
+  editBTN.addEventListener("click", function () {});
+  completeBTN.addEventListener("click", function () {});
 };
 taskBTN.addEventListener("click", function () {
   addTask();
-  console.log("button clicked");
 });
