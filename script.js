@@ -42,9 +42,15 @@ const createElement = function () {
   newElement.appendChild(completeBTN);
 
   //event listeners
-  deleteBTN.addEventListener("click", function () {});
-  editBTN.addEventListener("click", function () {});
-  completeBTN.addEventListener("click", function () {});
+  deleteBTN.addEventListener("click", function () {
+    console.log("test button del");
+  });
+  editBTN.addEventListener("click", function () {
+    console.log("test button edit");
+  });
+  completeBTN.addEventListener("click", function () {
+    console.log("test button complete");
+  });
 };
 taskBTN.addEventListener("click", function () {
   addTask();
