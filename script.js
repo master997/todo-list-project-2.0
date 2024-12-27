@@ -6,6 +6,7 @@ const taskBTN = document.querySelector(".add-task");
 const taskList = document.querySelector(".task-list");
 
 let inputValue; //global variable so can use in other fucntion
+
 const addTask = function () {
   inputValue = taskInput.value;
   if (inputValue.trim() === "" || inputValue === null) {
@@ -41,9 +42,14 @@ const createElement = function () {
   completeBTN.classList.add("complete-btn");
   newElement.appendChild(completeBTN);
 
+  const deleteTask = function () {
+    newElement.remove();
+  };
+
   //event listeners
   deleteBTN.addEventListener("click", function () {
     console.log("test button del");
+    deleteTask();
   });
   editBTN.addEventListener("click", function () {
     console.log("test button edit");
