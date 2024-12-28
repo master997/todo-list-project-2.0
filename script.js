@@ -46,18 +46,28 @@ const createElement = function () {
     newElement.remove();
   };
 
+  const editTask = function () {
+    let newInput = prompt("Edit current task", inputValue);
+    if (newInput && newInput.trim() !== "") {
+      spanElement.textContent = newInput;
+    } else {
+      alert("Task cannot be empty!");
+    }
+  };
+
   //event listeners
   deleteBTN.addEventListener("click", function () {
-    console.log("test button del");
     deleteTask();
   });
+
   editBTN.addEventListener("click", function () {
-    console.log("test button edit");
+    editTask();
   });
-  completeBTN.addEventListener("click", function () {
-    console.log("test button complete");
-  });
+
+  completeBTN.addEventListener("click", function () {});
 };
+
 taskBTN.addEventListener("click", function () {
   addTask();
+  spanElement.classList.toggle("completed");
 });
