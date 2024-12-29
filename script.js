@@ -64,10 +64,11 @@ const createElement = function () {
     editTask();
   });
 
-  completeBTN.addEventListener("click", function () {});
+  completeBTN.addEventListener("click", function () {
+    spanElement.classList.toggle("completed");
+  });
 };
 
 taskBTN.addEventListener("click", function () {
   addTask();
-  spanElement.classList.toggle("completed");
 });
